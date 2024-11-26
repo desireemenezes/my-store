@@ -1,0 +1,3 @@
+export const PRODUCTS = {
+  UPDATE_LIST: "PRODUCTS.UPDATE_LIST",
+};
