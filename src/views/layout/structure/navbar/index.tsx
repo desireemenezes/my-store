@@ -350,14 +350,16 @@ const NavBar = ({ children }: IContent) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Home', 'Products', 'About'].map((text, index) => (
-                        <ListItem key={text} disablePadding >
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <Link style={{ color: "inherit", textDecoration: "none" }} to={`/${text}`}><ListItemText primary={text} /></Link>
-                            </ListItemButton>
+                    {['Home', 'Products',].map((text, index) => (
+                        <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+                            <Link style={{ color: "inherit", textDecoration: "none", }} to={`/${text}`}>
+                                <ListItemButton >
+                                    <ListItemIcon>
+                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text} />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                     ))}
                 </List>

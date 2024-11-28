@@ -5,8 +5,6 @@ import Home from '../views/pages/home';
 import ListingProducts from '../views/pages/products/Listing';
 import RegisterProduct from '../views/pages/products/Register';
 
-import About from '../views/pages/about';
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -27,7 +25,6 @@ const App = () => {
           <Route path='/home' component={Home} />
           <Route exact path='/products' component={ListingProducts} />
           <Route exact path='/products/register' component={RegisterProduct} />
-          <Route path='/about' component={About} />
         </Switch>
       </Layout>
     </ThemeProvider>
