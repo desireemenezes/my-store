@@ -5,8 +5,8 @@ import { useState } from "react";
 
 export function useProducts() {
     const [page, setPage] = useState(0);
-
     const [rowsPerPage, setRowsPerPage] = useState(10);
+
     const { data, isLoading, isError } = useQuery<IResponseProducts>(['get-products'], () => Api.getProducts(), {
         staleTime: 1000 * 60 * 60
     });
@@ -27,6 +27,7 @@ export function useProducts() {
         }
         return '00,00';
     }
+
 
     return {
         data,

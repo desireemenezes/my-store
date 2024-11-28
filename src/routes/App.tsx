@@ -2,7 +2,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Switch, Route } from 'react-router-dom';
 import Layout from '../views/layout';
 import Home from '../views/pages/home';
-import Products from '../views/pages/products';
+import ListingProducts from '../views/pages/products/Listing';
+import RegisterProduct from '../views/pages/products/Register';
+
 import About from '../views/pages/about';
 
 const theme = createTheme({
@@ -22,8 +24,9 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/Home' component={Home} />
-          <Route path='/products' component={Products} />
+          <Route path='/home' component={Home} />
+          <Route exact path='/products' component={ListingProducts} />
+          <Route exact path='/products/register' component={RegisterProduct} />
           <Route path='/about' component={About} />
         </Switch>
       </Layout>

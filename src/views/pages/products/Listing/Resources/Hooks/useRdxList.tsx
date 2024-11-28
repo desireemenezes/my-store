@@ -1,5 +1,5 @@
 import { RootStateOrAny, useSelector, useDispatch } from "react-redux";
-import { updateListProducts } from "../../../../../redux/actions/productsActions";
+import { updateListProducts } from "../../../../../../redux/actions/productsActions";
 
 export function useRdxList() {
     const dispatch = useDispatch();
