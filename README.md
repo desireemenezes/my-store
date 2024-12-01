@@ -25,3 +25,6 @@ https://fakeapi.platzi.com/en/rest/products/
 
 ## Teste Jest
 - Supertest (https://www.npmjs.com/package/supertest)
+
+![image](https://github.com/user-attachments/assets/59c0eefa-2c93-4f18-b440-dbdc949818ba)
+
