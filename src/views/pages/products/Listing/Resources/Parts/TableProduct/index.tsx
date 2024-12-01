@@ -2,9 +2,13 @@ import Paper from '@mui/material/Paper';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { Avatar, Box, CircularProgress, Table, TableContainer, TablePagination, Typography } from '@mui/material';
+import { Avatar, Box, CircularProgress, IconButton, Table, TableContainer, TablePagination, Tooltip, Typography } from '@mui/material';
 import HeadTable from '../TableHead';
 import { useProducts } from '../../Hooks';
+import { Link } from 'react-router-dom';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ModalDialog from '../Modal';
 
 export default function TableProducts() {
     const { data,
@@ -12,6 +16,10 @@ export default function TableProducts() {
         isError,
         page,
         rowsPerPage,
+        openModal,
+        deleteProduct,
+        handleModalDelete,
+        handleClose,
         texFormat,
         handleChangePage,
         handleChangeRowsPerPage } = useProducts();
@@ -49,6 +57,23 @@ export default function TableProducts() {
                                                     R$ {texFormat(listProducts.price.toString())}
                                                 </Typography>
                                             </TableCell>
+                                            <TableCell>
+                                                <Typography component={Link}
+                                                    to={`Products/edit/${listProducts.id}`}>
+                                                    <Tooltip title={'Editar'}>
+                                                        <IconButton>
+                                                            <EditIcon />
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell >
+                                                <Tooltip title={'Deletar'}>
+                                                    <IconButton onClick={() => handleModalDelete(listProducts.id)}>
+                                                        <DeleteIcon />
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -61,6 +86,16 @@ export default function TableProducts() {
                 )}
 
             </TableContainer>
+
+
+            <ModalDialog
+                open={openModal}
+                handleClose={handleClose}
+                deleteProduct={() => {
+                    deleteProduct.mutate()
+                }}
+            />
+
             <TablePagination
                 rowsPerPageOptions={[10, 20, 500]}
                 component="div"

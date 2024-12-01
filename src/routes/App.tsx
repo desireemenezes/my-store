@@ -25,6 +25,7 @@ const App = () => {
           <Route path='/home' component={Home} />
           <Route exact path='/products' component={ListingProducts} />
           <Route exact path='/products/register' component={RegisterProduct} />
+          <Route exact path='/products/edit/:id' component={RegisterProduct} />
         </Switch>
       </Layout>
     </ThemeProvider>

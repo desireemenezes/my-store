@@ -5,10 +5,13 @@ import Typography from '@mui/material/Typography';
 import { Box, CircularProgress, List, ListItem, ListItemText, } from '@mui/material';
 import { useProducts } from '../../Hooks';
 import SellIcon from '@mui/icons-material/Sell';
+import { useState } from 'react';
 
 
 export default function ListCard() {
     const { dataCategory, errorCategory, loadingCategory } = useProducts();
+    const [count, setCount] = useState(0);
+
     if (errorCategory) {
         return <Box>Ops! Houve um erro ao carregar as categorias!</Box>
     }
@@ -25,7 +28,7 @@ export default function ListCard() {
                     {loadingCategory
                         ? <CircularProgress color='inherit' size={50} />
                         : <List >
-                            {dataCategory?.data.map((item: { name: string; }) => (
+                            {dataCategory?.data.slice(0, 10).map((item: { name: string; }) => (
                                 <ListItem key={item.name} disablePadding >
                                     <ListItemText sx={{ color: 'primary.dark' }} primary={item.name} />
                                 </ListItem>

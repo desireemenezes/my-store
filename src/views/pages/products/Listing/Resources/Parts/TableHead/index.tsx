@@ -102,7 +102,8 @@ function Head({ oneRequestSort, order, orderBy }: IHeadPorps) {
                         </TableCell>
                     )
                 ))}
-
+                <TableCell key={5} width={10 + "%"}>Editar</TableCell>
+                <TableCell key={6} width={10 + "%"}>Deletar</TableCell>
             </TableRow>
         </TableHead >
     );

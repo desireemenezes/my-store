@@ -8,4 +8,9 @@ export class Api {
     const response = await this.fakeApi.get(`/products`);
     return response;
   };
+
+  static deleteProducts = async (id: number | string) => {
+    const response = await this.fakeApi.get(`/products/${id}`);
+    return response;
+  };
 }

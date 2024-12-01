@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { Api } from "../API";
 import { IResponseProducts } from "../Types";
 import { useState } from "react";
@@ -6,6 +6,8 @@ import { useState } from "react";
 export function useProducts() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [id, setCurrentId] = useState(0);
+    const [openModal, setOpenModal] = useState(false);
 
     const { data, isLoading, isError } = useQuery<IResponseProducts>(['get-products'], () => Api.getProducts(), {
         staleTime: 1000 * 60 * 60
@@ -28,6 +30,33 @@ export function useProducts() {
         return '00,00';
     }
 
+    const handleModalDelete = (id: number) => {
+        setCurrentId(id);
+        setOpenModal(true);
+    }
+
+    const handleClose = () => {
+        setOpenModal(false);
+    }
+
+    const deleteProduct = useMutation(
+        () => {
+            setOpenModal(false);
+            return Api.deleteProducts(id);
+        },
+        {
+            onSuccess: () => {
+                setTimeout(() => {
+                    console.log('pRODUTO DELETADO');
+                }, 1000)
+            },
+            onError: () => {
+                setTimeout(() => {
+                    console.log('houve um erro');
+                }, 1000)
+            }
+        }
+    )
 
     return {
         data,
@@ -35,6 +64,10 @@ export function useProducts() {
         isError,
         page,
         rowsPerPage,
+        id, openModal,
+        deleteProduct,
+        handleClose,
+        handleModalDelete,
         texFormat,
         handleChangePage,
         handleChangeRowsPerPage,
