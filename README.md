@@ -1,4 +1,4 @@
-<h1 align="center"> 🚧 CRUD DE PRODUTOS DE UMA PLATAFORMA DE E-COMMERCE.. 🚧</h1>
+<h1> 🚧 CRUD DE PRODUTOS DE UMA PLATAFORMA DE E-COMMERCE.. 🚧</h1>
 
 ### Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
